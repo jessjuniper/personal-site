@@ -1,10 +1,14 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import Link from '../components/Link.astro';
-import Break from '../components/Break.astro';
+const allPosts = Object.values(import.meta.glob('./posts/*.md', { eager: true }));
 ---
 
 <Layout>
     <h1 class="text-2xl text-purple-300">blog posts!</h1>
-    <p>no blog posts yet!</p>
+    <p>this is where i write my random silly thoughts!</p>
+    <ul>
+        {allPosts.map((post: any) => <li><Link href={post.url} label={post.frontmatter.title}></Link></li>)}
+    </ul>
+    <Link href="/tags" label="browse blog posts by tag here!"></Link>
 </Layout>
