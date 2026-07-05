@@ -6,9 +6,9 @@ const allPosts = Object.values(import.meta.glob('./posts/*.md', { eager: true })
 
 <Layout>
     <h1 class="text-2xl text-purple-300">blog posts!</h1>
-    <p>this is where i write my random silly thoughts!</p>
+    <p>this is where i write my random silly thoughts</p>
     <ul>
-        {allPosts.map((post: any) => <li><Link href={post.url} label={post.frontmatter.title}></Link></li>)}
+        {allPosts.map((post: any) => <li><span>{post.frontmatter.date.toString().slice(0,10)} - </span><Link href={post.url} label={post.frontmatter.title}></Link></li>)}
     </ul>
-    <Link href="/tags" label="browse blog posts by tag here!"></Link>
+    <!--<Link href="/tags" label="browse blog posts by tag here!"></Link> -->
 </Layout>
